@@ -349,7 +349,3 @@ table.dataTable thead .sorting:after {
 .panel-yellow a:hover {
     color: #df8a13;
 }
-
-.navbar-default {
-    border-color: #7B5614 !important;
-}

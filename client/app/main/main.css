@@ -8,9 +8,6 @@
 }
 
 #banner h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
 }
 
 .hero-unit {
@@ -19,14 +16,15 @@
     color: #F5F5F5;
     text-align: center;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-    background: #4393B9;
 }
 
 .footer {
-    text-align: center;
-    padding: 30px 0;
-    margin-top: 70px;
+    padding: 0 0;
+    margin-top: 0;
     border-top: 1px solid #E5E5E5;
+    z-index: 1;
+    background: linear-gradient(rgba(255,255,255,0.02), rgba(255,255,255,0));
+    text-align: right;
 }
 
 
@@ -38,16 +36,13 @@ body {
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
-.marketing,
-.footer {
+.marketing {
   padding-left: 15px;
   padding-right: 15px;
 }
 
 /* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-}
+
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
@@ -55,28 +50,6 @@ body {
   line-height: 40px;
   padding-bottom: 19px;
 }
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
-
 /* Supporting marketing content */
 .marketing {
   margin: 40px 0;
@@ -114,6 +87,7 @@ background-color: #eee;
 .row {
   margin-left:0px;
   margin-right:0px;
+  z-index: 0;
 }
 
 /* Wrapper for page content to push down footer */
@@ -126,16 +100,6 @@ background-color: #eee;
   /* Pad bottom by footer height */
   padding: 0 0 60px;
 }
-
-/* Set the fixed height of the footer here */
-#footer {
-  height: 60px;
-  background-color: #f5f5f5;
-  margin-top:50px;
-  padding-top:20px;
-  padding-bottom:20px;
-}
-
 
 /* Custom page CSS
 -------------------------------------------------- */
@@ -170,25 +134,8 @@ background-color: #eee;
   height: 600px;
 }
 
-
-#wrap > .container {
-  padding: 60px 15px 0;
-}
-.container .credit {
-  margin: 20px 0;
-}
-
-#footer {
-  background-color:#414141;
-}
-
 #footer a {
-  color:#efefef;
-}
-
-header {
-  background: #333;
-  color:#555;
+  color:#4393B9;
 }
 
 header .dropdown-menu {
@@ -197,9 +144,9 @@ header .dropdown-menu {
   border-width:0;
 }
 
-h1 {
+/*h1 {
   font-size:50px;
-}
+}*/
 
 .logo {
   font-size:40px;
@@ -224,10 +171,6 @@ h1 {
    -webkit-transition: all .6s ease-in-out;
 }
 
-#footer > .container {
-  
-}
-
 @media (min-width: 767px) {
   .navbar-nav.nav-justified > li{
       float:none;
@@ -240,10 +183,10 @@ h1 {
   
 /* customize nav style */
 .navbar-custom {
-    background-color: #2e2e2e;
+  background-color: #2e2e2e;
   font-weight:700;
-    text-transform:uppercase;
-    border-width:0;
+  text-transform:uppercase;
+  border-width:0;
 }
 .navbar-custom  .navbar-nav>li>a {
   color: #ddd;
@@ -275,12 +218,6 @@ h1 {
   border-width:0;
 }
 
-@media (max-width: 768px) {
-  header {
-  
-  }
-}
-
 #map-canvas {
     width: 100%; 
     height: 300px;
@@ -298,49 +235,165 @@ h1 {
    border-top-left-radius:3px;
    border-top-right-radius:3px;
 }
+
 .scroll-top a:link,.scroll-top a:visited {
   color:#222;
-} 
- 
-
-section {
-  color: #ffffff;
-  min-height: 400px;
-  height: auto !important;
-  height: 100%;
-  padding-top:100px;
-}
-
-.bg-1 {
-  background: url('http://luigidebernardini.com/wp-content/uploads/2015/05/Analytics.jpg') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-.bg-2 {
-  background: url('http://www.bootply.com/assets/example/bg_suburb.jpg') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-.bg-3 {
-  background: url('http://www.bootply.com/assets/example/bg_blueplane.jpg') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-.bg-4 {
-  padding-top:30px;
-    background-color:#e6e6e6;
 }
 
 .panel .img-responsive {
   min-height:270px;
     max-height:270px;
+}
+
+/*Styling the main content*/
+#centerMe {
+  margin:30% 20%;
+  height:40px;
+  width:680px;
+}
+
+.title{ 
+  color:white;  
+  font-family:Tahoma;
+  float:left;
+  font-size:40px;
+  line-height:40px;
+  padding:0 10px;
+  text-shadow:none;
+  font-weight:100;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+.hidden{
+  display: none;
+}
+
+.floatLeft {
+  float:left;
+
+}
+
+#textWrapper {
+  height:40px;
+  width:400px;
+  float:right;
+  padding-left: -20px;
+}
+
+.bottom {
+  margin: 75px 0 0 0; 
+  opacity:0;
+}
+
+.live {
+  margin:0;
+}
+
+.rotate {
+  -webkit-transition:all 0.9s;
+  -moz-transition:all 0.9s;
+  -ms-transition:all 0.9s;
+  -o-transition:all 0.9s;
+  transition:all 0.9s;
+  -webkit-transition-timing-function:ease-out;
+  -moz-transition-timing-function:ease-out;
+  -ms-transition-timing-function:ease-out;
+  -o-transition-timing-function:ease-out;
+  transition-timing-function:ease-out;
+  -webkit-transform:rotate(-360deg);
+  -moz-transform:rotate(-360deg);
+  -ms-transform:rotate(-360deg);
+  -o-transform:rotate(-360deg);
+  transform:rotate(-360deg);
+}
+
+.fa-heart-o {
+  color: tomato;
+}
+
+.box {
+  margin: 50px auto;
+  width:400px;
+  height:400px;
+}
+
+input[type="email"] {
+  appearance: none;
+  width:380px;
+  height:70px;
+  font-size:2em;
+  background:transparent;
+  border:none;
+  border-bottom:solid 4px #e6e8eb;
+  text-align:center;
+  transition: border-color 0.6s ease;
+}
+
+::-webkit-input-placeholder {
+   color: #464c4c;
+   transition: color 0.3s ease;
+}
+
+:focus::-webkit-input-placeholder {
+   color: transparent;
+   transition: color 0.3s ease-in-out;
+}
+
+
+input[type="email"]:focus {
+  outline:none;
+  border:none;
+  border-bottom:solid 4px #00AEEF;
+  transition: border-color 1s ease;
+  color: white;
+}
+
+input[type="submit"] {
+  appearance: none;
+  width:380px;
+  height:50px;
+  font-size:1.05em;
+  background:transparent;
+  color: #464c4c;
+  border:none;
+  text-align:center;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  transition: color 0.5s ease;
+  outline:none;
+   border:none;
+}
+
+
+input[type="submit"]:hover {
+  color: #e6e8eb;
+  cursor:pointer;
+  transition: color 0.5s ease;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+}
+
+#textWrapper {
+  float: center;
+}
+
+/*Animating the heart to beats*/
+
+
+  .heart {
+  animation: beat .5s infinite alternate;
+  transform-origin: center;
+}
+
+/* Heart beat animation */
+@keyframes beat{
+  to { transform: scale(1.4); }
 }

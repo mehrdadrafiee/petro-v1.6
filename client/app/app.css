@@ -3,6 +3,10 @@
  * Bootstrap Fonts
  */
 
+ body {
+    background-color: #2a2c31;
+ }
+
 @font-face {
     font-family: 'Glyphicons Halflings';
     src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot');
@@ -39,7 +43,7 @@
 }
 
 #banner, .navbar-static-top {
-    background: rgba(0, 0, 0, 0.8);
+    background: #2a2c31;
 }
 
 li:hover {
