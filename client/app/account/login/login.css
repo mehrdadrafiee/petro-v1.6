@@ -21,3 +21,12 @@
   background-color: #fafafa;
   border-color: #ccc;
 }
+
+.row {
+  background-color: #2a2c31;
+  height: 40em;
+}
+
+h1, label, p {
+  color: white;
+}
