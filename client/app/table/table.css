@@ -1,0 +1,6 @@
+.trash { color:rgb(209, 91, 71); }
+
+.done-true {
+  text-decoration: line-through;
+  color: grey;
+}

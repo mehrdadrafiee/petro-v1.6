@@ -1,0 +1,105 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div ng-include="'components/sidebar/sidebar.html'"></div>
+
+<div id="wrapper">
+  <div id="page-wrapper">
+
+    <div ng-show="isLoading" class="col-sm-12 text-center">
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="{{'width: '+ progress + '%'}}">
+        </div>
+      </div>
+      <button ng-click="generateCharts()" type="button" class="btn btn-primary">Generate</button>
+
+    </div>
+    <div  class="row" ng-if="!isLoading">
+      <!--Submissoins-->
+    <div class="col-lg-6 col-sm-12" >
+          <div class="panel panel-default">
+              <div class="panel-heading">Submission of Oil, Water and Gas</div>
+              <div class="panel-body">
+              <canvas class="chart chart-doughnut chart-xs" data="sumission.data" labels="sumission.labels" legend="true"></canvas>
+              </div>
+          </div>
+      </div>
+
+    <!--Highest Oil-->
+    <div class="col-lg-6 col-sm-12" >
+      <div class="panel panel-default">
+        <div class="panel-heading">Highest Oil</div>
+        <div class="panel-body">
+          <canvas  class="chart chart-doughnut chart-xs" data="higestOil.data" labels="higestOil.labels" legend="true"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!--Bar Chart-->
+    <div class="col-lg-6 col-sm-12" id="bar-chart">
+      <div class="panel panel-default">
+        <div class="panel-heading">Bar Chart</div>
+        <div class="panel-body">
+          <canvas id="bar" class="chart chart-bar" data="barChartData.data" labels="barChartData.labels" series="barChartData.series"
+                  ></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!--Line Chart-->
+    <div class="col-lg-6 col-sm-12" id="line-chart" >
+      <div class="panel panel-default">
+        <div class="panel-heading">Line Chart</div>
+        <div class="panel-body">
+          <canvas id="line" class="chart chart-bar" data="lineChartData.data" labels="lineChartData.labels" series="lineChartData.series"
+              ></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!--Line Chart-->
+   <!-- <div class="col-lg-6 col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Line Chart</div>
+        <div class="panel-body">
+          <canvas class="chart chart-bar" data="barChartData.data" labels="barChartData.labels" series="barChartData.series"
+              ></canvas>
+        </div>
+      </div>
+    </div>-->
+
+    <!--<div class="col-lg-6 col-sm-12" id="radar-chart">
+      <div class="panel panel-default">
+        <div class="panel-heading">Radar Chart</div>
+        <div class="panel-body">
+          <canvas id="area" class="chart chart-radar" data="radar.data" labels="radar.labels" click="onClick"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-sm-12" id="pie-chart">
+      <div class="panel panel-default">
+        <div class="panel-heading">Pie Chart</div>
+        <div class="panel-body">
+          <canvas id="pie" class="chart chart-pie chart-xs" data="pie.data" labels="pie.labels"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-sm-12" id="polar area-chart">
+      <div class="panel panel-default">
+        <div class="panel-heading">Polar Area Chart</div>
+        <div class="panel-body">
+          <canvas id="polar" class="chart chart-polar-area" data="polar.data" labels="polar.labels"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-sm-12" id="base-chart">
+      <div class="panel panel-default">
+        <div class="panel-heading">Dynamic Chart</div>
+        <div class="panel-body">
+          <canvas id="base" class="chart chart-base" chart-type="dynamic.type" data="dynamic.data"
+                  labels="dynamic.labels" legend="true"></canvas>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary pull-right" ng-click="dynamic.toggle()">Toggle</button>
+    </div>-->
+  </div>
+  </div>
+</div>

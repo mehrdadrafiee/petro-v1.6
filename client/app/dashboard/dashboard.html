@@ -1,0 +1,137 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div ng-include="'components/sidebar/sidebar.html'"></div>
+
+<div id="wrapper">
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <h3 class="page-header">Dashboard</h3>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+    <!-- /.panel -->
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="map_canvas">
+          <map></map>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <i class="fa fa-clock-o fa-fw"></i> Responsive Timeline
+            <!-- real time socket.io -->
+            <div class="main-box">
+              <h1 class="page-header">Search Wells</h1>
+              <ul class="nav nav-tabs nav-stacked" ng-repeat="thing in awesomeThings">
+                <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}
+                  <button type="button" class="close" ng-click="deleteThing(thing)">&times;</button>
+                </a></li>
+              </ul>
+
+              <form class="thing-form">
+                <label>Table Syncs in realtime</label>
+
+                <p class="input-group">
+                  <input type="text" class="form-control" placeholder="Enter well name" ng-model="newThing"/>
+                <span class="input-group-btn">
+                  <button type="submit" class="btn btn-primary" ng-click="addThing()">Add Well(s)</button>
+                </span>
+                </p>
+
+                <label>Table Syncs in realtime</label>
+
+                <p class="input-group">
+                  <input type="file" class="form-control" upload-file ng-model="wellFile"/>
+                <span class="input-group-btn">
+                  <button type="submit" class="btn btn-primary" ng-click="uploadFile()">Import Well(s)</button>
+                </span>
+                </p>
+
+
+              </form>
+              <!-- importing the table using Smart Table
+              <button type="button" ng-click="addRandomItem(row)" class="btn btn-sm btn-success"><i
+                  class="glyphicon glyphicon-plus"></i> Add random well
+              </button>-->
+
+              <table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped col-md-12">
+                <thead>
+                <tr>
+                  <th st-sort="wellName">Well Name</th>
+                  <th st-sort="latitude">Wellhead Latitude</th>
+                  <th st-sort="longitude">Wellhead Longitude</th>
+                  <th st-sort="apiNumber">API Number</th>
+                  <th st-sort="operator">Operator</th>
+                  <th st-sort="status">Status</th>
+                  <th st-sort="rsvCat">RSV_CAT</th>
+                  <th st-sort="latLength">LAT_LENGTH</th>
+                  <th st-sort="stage">Stages</th>
+                  <th st-sort="fpd">FPD</th>
+                  <th st-sort="oil">Total_Oil</th>
+                  <th st-sort="gas">Total_Gas</th>
+                  <th st-sort="water">Total_Water</th>
+                  <!--th st-sort="balance">balance</th> -->
+                </tr>
+                <tr>
+                  <th colspan="12"><input st-search="" class="form-control" placeholder="global search ..."
+                                          type="text"/>
+                  </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="row in displayedCollection | orderBy: 'name'">
+                  <td>{{row.name}}</td>
+                  <td>{{row.latitude}}</td>
+                  <td>{{row.longitude}}</td>
+                  <td>{{row.apiNumber}}</td>
+                  <td>{{row.operator}}</td>
+                  <td>{{row.status}}</td>
+                  <td>{{row.rsvCat}}</td>
+                  <td>{{row.latLength}}</td>
+                  <td>{{row.stages}}</td>
+                  <td>{{row.fpd | date:'EEEE, MMMM d, y'}}</td>
+                  <td>{{row.oil}}</td>
+                  <td>{{row.gas}}</td>
+                  <td>{{row.water}}</td>
+                  <td>
+                    <button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger"><i
+                        class="glyphicon glyphicon-remove-circle"></i>
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <p id="names" ng-click="hide()">This is where the names should be appeared!</p>
+            </div>
+            <!-- /.panel-heading -->
+            <timeline></timeline>
+            <!-- /.panel-body -->
+          </div>
+          <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-8 -->
+        <!--
+        <div class="col-lg-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                -->
+        <!-- Google Maps -->
+        <!--
+        <div id="map"></div>
+          <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
+           <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+          </div>
+        </div> -->
+        <!-- /.panel-heading -->
+        <notifications></notifications>
+        <!-- /.panel-body -->
+      </div>
+      <!-- /.panel -->
+      <chat></chat>
+      <!-- /.panel .chat-panel -->
+    </div>
+  </div>

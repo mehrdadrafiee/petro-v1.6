@@ -1,0 +1,17 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+ 
+<div class="container">
+  <iframe width="100%" height="410" src="//www.youtube.com/embed/DcJFdCmN98s" frameborder="0"></iframe>
+ 
+  <form class="comment-form" ng-submit="addComment()" name="commentForm">
+    <textarea class="form-control" ng-model="newComment" rows="3" placeholder="Enter a new comment" required></textarea>
+    <input class="btn btn-primary" type="submit" ng-disabled="commentForm.$invalid" value="Post">
+  </form>
+ 
+  <ul class="comment-list">
+    <li ng-repeat="comment in comments">
+      <header>{{ comment.author.name }}</header>
+      <p>{{ comment.content }}</p>
+    </li>
+  </ul>
+</div>
