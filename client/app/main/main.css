@@ -33,7 +33,6 @@
 body {
     padding-bottom: 20px;
     margin: 0px;
-    overflow: hidden;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -44,21 +43,6 @@ body {
 }
 
 /* Custom page header */
-
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
-}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
@@ -92,17 +76,6 @@ background-color: #eee;
   z-index: 0;
 }
 
-/* Wrapper for page content to push down footer */
-#wrap {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  /* Negative indent footer by its height */
-  margin: 0 auto -60px;
-  /* Pad bottom by footer height */
-  padding: 0 0 60px;
-}
-
 /* Custom page CSS
 -------------------------------------------------- */
 /* CUSTOMIZE THE NAVBAR
@@ -121,19 +94,6 @@ background-color: #eee;
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
-}
-
-/* Declare heights because of positioning of img element */
-#myCarousel  .item {
-  height: 600px;
-  background-color:#bbb;
-}
-#myCarousel img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: 600px;
 }
 
 #footer a {
@@ -212,19 +172,8 @@ header .dropdown-menu {
   outline:0;
 }
 
-.divider {
-  height:50px;
-}
-
 .panel {
   border-width:0;
-}
-
-#map-canvas {
-    width: 100%; 
-    height: 300px;
-  margin: 0;
-  padding: 15px;
 }
 
 .scroll-top {
@@ -242,17 +191,7 @@ header .dropdown-menu {
   color:#222;
 }
 
-.panel .img-responsive {
-  min-height:270px;
-    max-height:270px;
-}
-
 /*Styling the main content*/
-#centerMe {
-  margin:30% 20%;
-  height:40px;
-  width:680px;
-}
 
 .title{ 
   color:white;  
@@ -283,7 +222,12 @@ header .dropdown-menu {
   height:40px;
   width:400px;
   float:right;
-  padding-left: -20px;
+}
+
+#centerMe {
+  margin:30% 20%;
+  height:40px;
+  width:680px;
 }
 
 .bottom {
@@ -313,6 +257,16 @@ header .dropdown-menu {
   transform:rotate(-360deg);
 }
 
+/*Animating the heart to beats*/
+.heart {
+  animation: beat .5s infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes beat{
+  to { transform: scale(1.4); }
+}
+
 .fa-heart-o {
   color: tomato;
 }
@@ -320,7 +274,7 @@ header .dropdown-menu {
 .box {
   margin: 50px auto;
   width:400px;
-  height:400px;
+  height:100%;
 }
 
 input[type="email"] {
@@ -381,21 +335,4 @@ hr {
   border: 0;
   height: 1px;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
-}
-
-#textWrapper {
-  float: center;
-}
-
-/*Animating the heart to beats*/
-
-
-  .heart {
-  animation: beat .5s infinite alternate;
-  transform-origin: center;
-}
-
-/* Heart beat animation */
-@keyframes beat{
-  to { transform: scale(1.4); }
 }
