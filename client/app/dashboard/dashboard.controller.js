@@ -437,7 +437,6 @@ var app = angular.module('petroApp')
         $scope.rowCollection.splice(index, 1);
       }
     };
-    $scope.chart = 'http://facebook.com';
 
     $scope.uploadFile = function () {
       if (!$scope.wellFile) return alert('Please select a file');

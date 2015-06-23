@@ -1,1 +1,11 @@
 .trash { color:rgb(209, 91, 71); }
+
+.col-lg-12 {
+	background-color: #f5f5f5;
+}
+
+.mapArea {
+	background-color: rgb(245, 245, 245);
+	padding-top: 1em;
+
+}

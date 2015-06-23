@@ -87,10 +87,26 @@ angular.module('petroApp')
 
     $scope.sumission = {
       labels: ["Total Water", "Total Oil", "Total Gas"],
-      data: [$scope.totalWater, $scope.totalGas, $scope.totalOil]
+      data: [
+        {
+          value: $scope.totalWater,
+          color: "rgba(0, 116, 217, 0.7)",
+          highlight: "rgba(0, 116, 217, 1)"
+        },
+        {
+          value: $scope.totalGas,
+          color: "rgba(255, 65, 54, 0.7)",
+          highlight: "rgba(255, 65, 54, 1)"
+         },
+         {
+          value: $scope.totalOil,
+          color: "rgba(46, 204, 64, 0.7)",
+          highlight: "rgba(46, 204, 64, 1)"
+        }
+      ]
     };
 
-    $scope.higestOil = {
+    $scope.highestOil = {
       labels: ["Water", "Oil", "Gas"],
       data: [$scope.highestOilData.oil, $scope.highestOilData.gas, $scope.highestOilData.water]
     };
@@ -169,9 +185,9 @@ angular.module('petroApp')
 
           //Get the highest one oil well
           var highestWell = wells[highestValueIndex];
-          $scope.higestOil.data[0] = highestWell.water;
-          $scope.higestOil.data[1] = highestWell.oil;
-          $scope.higestOil.data[2] = highestWell.gas;
+          $scope.highestOil.data[0] = highestWell.water;
+          $scope.highestOil.data[1] = highestWell.oil;
+          $scope.highestOil.data[2] = highestWell.gas;
 
           //After getting data from server, update the charts
           $scope.sumission.data[0] = $scope.totalWater;
@@ -220,9 +236,9 @@ angular.module('petroApp')
 
       //Get the highest one oil well
       var highestWell = wells[highestValueIndex];
-      $scope.higestOil.data[0] = highestWell.water;
-      $scope.higestOil.data[1] = highestWell.oil;
-      $scope.higestOil.data[2] = highestWell.gas;
+      $scope.highestOil.data[0] = highestWell.water;
+      $scope.highestOil.data[1] = highestWell.oil;
+      $scope.highestOil.data[2] = highestWell.gas;
 
       //After getting data from server, update the charts
       $scope.sumission.data[0] = $scope.totalWater;
