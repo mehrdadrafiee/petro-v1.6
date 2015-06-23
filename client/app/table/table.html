@@ -5,10 +5,13 @@
 <div id="wrapper">
     <div id="page-wrapper">
         <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">EUR Table</h1>
-            </div>
-            <!-- /.col-lg-12 -->
+        <form class="thing-form">
+           <label>Import an excel file.</label>
+           <p class="input-group">
+             <input type="file" ngf-select ngf-change="uploadFile($files)" ngf-multiple="multiple" class="form-control" ng-model="wellFile"/>
+           </p>
+         </form>
+
         </div>
         <!-- /.row -->
         <div class="row">
@@ -18,15 +21,6 @@
                         DataTables Advanced Tables
                     </div>
                     <!-- importing the excel file -->
-                     <form class="thing-form">
-                       <label>Import an excel file.</label>
-                       <p class="input-group">
-                         <input type="file" class="form-control" ng-model="wellFile"/>
-                       <span class="input-group-btn">
-                         <button type="submit" class="btn btn-primary" ng-click="uploadFile()">Import Well(s)</button>
-                       </span>
-                       </p>
-                     </form>
 
                     <!-- /.panel-heading -->
                     <div class="panel-body">
