@@ -44,3 +44,7 @@ table { border-collapse: collapse; }
  .center{
      text-align: center;
  }
+
+ #wrapper {
+ 	height: 50px;
+ }

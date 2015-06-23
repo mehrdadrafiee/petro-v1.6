@@ -263,14 +263,14 @@ header .dropdown-menu {
 }
 
 /*Animating the heart to beats*/
-.heart {
+/*.heart {
   animation: beat .5s infinite alternate;
   transform-origin: center;
 }
 
 @keyframes beat{
   to { transform: scale(1.4); }
-}
+}*/
 
 .fa-heart-o {
   color: tomato;
