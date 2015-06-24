@@ -12,45 +12,44 @@
       <button ng-click="generateCharts()" type="button" class="btn btn-primary">Calculate data</button>
 
     </div>
+
     <div  class="row" ng-if="!isLoading">
       <!--Submissoins-->
-    <div class="col-lg-6 col-sm-12" >
-          <div class="panel panel-default">
-              <div class="panel-heading"><i class="fa fa-pie-chart fa-fw"></i> Submission of Oil, Water and Gas</div>
-              <div class="panel-body">
-              <canvas class="chart chart-doughnut chart-xs" data="sumission.data" labels="sumission.labels" legend="true"></canvas>
-              </div>
-          </div>
+    <div class="col-lg-6 col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading"><i class="fa fa-pie-chart fa-fw"></i> Submission of Oil, Water and Gas</div>
+        <div class="panel-body">
+          <canvas class="chart chart-doughnut chart-xs" data="sumission.data" labels="sumission.labels" legend="true"></canvas>
+        </div>
       </div>
+    </div>
 
     <!--Highest Oil-->
-    <div class="col-lg-6 col-sm-12" >
+    <div class="col-lg-6 col-sm-12">
       <div class="panel panel-default">
         <div class="panel-heading"><i class="fa fa-pie-chart fa-fw"></i> Highest Oil</div>
         <div class="panel-body">
-          <canvas  class="chart chart-doughnut chart-xs" data="highestOil.data" labels="highestOil.labels" legend="true"></canvas>
+          <canvas class="chart chart-doughnut chart-xs" data="highestOil.data" labels="highestOil.labels" legend="true"></canvas>
         </div>
       </div>
     </div>
 
     <!--Bar Chart-->
-    <div class="col-lg-6 col-sm-12" id="bar-chart">
+    <div class="col-lg-6 col-sm-12">
       <div class="panel panel-default">
         <div class="panel-heading"><i class="fa fa-bar-chart fa-fw"></i> Bar Chart</div>
         <div class="panel-body">
-          <canvas id="bar" class="chart chart-bar" data="barChartData.data" labels="barChartData.labels" series="barChartData.series"
-                  ></canvas>
+          <canvas id="bar" class="chart chart-bar" data="barChartData.data" labels="barChartData.labels" series="barChartData.series"></canvas>
         </div>
       </div>
     </div>
 
     <!--Line Chart-->
-    <div class="col-lg-6 col-sm-12" id="line-chart" >
+    <div class="col-lg-6 col-sm-12">
       <div class="panel panel-default">
         <div class="panel-heading"><i class="fa fa-line-chart fa-fw"></i> Line Chart</div>
         <div class="panel-body">
-          <canvas id="line" class="chart chart-line" data="lineChartData.data" labels="lineChartData.labels" series="lineChartData.series"
-              ></canvas>
+          <canvas id="line" class="chart chart-line" data="lineChartData.data" labels="lineChartData.labels" series="lineChartData.series"></canvas>
         </div>
       </div>
     </div>

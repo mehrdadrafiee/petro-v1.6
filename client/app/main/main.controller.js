@@ -1,6 +1,6 @@
 'use strict';
 
-var words = ['mathematics', 'engineering', 'oil industry', 'fracturing'];
+var words = ['in-depth mathematics', 'robust engineering', 'valuable interpretation', 'advanced visualization'];
 var numOfWords = words.length;
 var counter = 0;
 
