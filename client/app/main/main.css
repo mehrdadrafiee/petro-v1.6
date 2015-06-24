@@ -225,8 +225,9 @@ header .dropdown-menu {
 
 #textWrapper {
   height:40px;
-  width:400px;
+  width:450px;
   float:right;
+  padding-left: none;
 }
 
 #centerMe {
@@ -340,6 +341,7 @@ hr {
   border: 0;
   height: 1px;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
 }
 
 .footerRight {
@@ -349,7 +351,6 @@ hr {
 .footerLeft {
   float: left;
 }
-
-.mainContent {
+/*.mainContent {
   background-color: rgba(255, 255, 255, 0.1);
-}
+}*/
