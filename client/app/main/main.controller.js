@@ -64,7 +64,7 @@ setInterval(function() {
   };
 
   var updateCounter = function(){
-    if((counter + 1) == numOfWords){
+    if((counter + 1) === numOfWords){
       counter = 0;
     } else {
       counter++;

@@ -439,6 +439,8 @@ var app = angular.module('petroApp')
     };
 
     $scope.uploadFile = function () {
+      console.log($scope.wellFile);
+
       if (!$scope.wellFile) return alert('Please select a file');
 
       extractData($scope.wellFile)

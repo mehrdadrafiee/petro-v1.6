@@ -70,6 +70,16 @@ a:hover {
     margin-top: 0px !important;
 }
 
+.logoImage {
+    width: 8em;
+    height: 2.8em;
+    margin-top: -13px;
+}
+
+.navbar {
+    background-color: #1f2326 !important;
+}
+
 /*
 li:hover {
     color: white !important;

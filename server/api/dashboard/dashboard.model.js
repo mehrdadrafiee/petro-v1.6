@@ -9,12 +9,12 @@ var DashboardSchema = new Schema({
     set: toNumber
   },
   latitude: {
-    type: Number,
-    set: toNumber
+    type: Number
+    // set: toNumber
   },
   longitude: {
-    type: Number,
-    set: toNumber
+    type: Number
+    // set: toNumber
   },
   apiNumber: {
     type: Number,
