@@ -6,13 +6,23 @@
     <div id="page-wrapper">
         <div class="row">
 
-        <form class="thing-form">
-           <label>Import an excel file.</label>
-           <p class="input-group">
-             <input type="file" ngf-select ngf-change="uploadFile($files)" ngf-multiple="multiple" class="form-control" ng-model="wellFile"/>
-           </p>
-         </form>
+            <form class="thing-form">
+                <label>Import an excel file.</label>
 
+                <p class="input-group">
+                    <input type="file" ngf-select ngf-change="uploadFile($files)" ngf-multiple="multiple"
+                           class="form-control" ng-model="wellFile"/>
+                </p>
+            </form>
+
+            <div class="col-md-6">
+                <canvas class="chart chart-line"
+                        data="lines.data"
+                        series="lines.series"
+                        labels="lines.labels"
+                        colours="lines.colours"
+                        legend="true"></canvas>
+            </div>
         </div>
     </div>
-<div>
+</div>
