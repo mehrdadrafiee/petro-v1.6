@@ -305,7 +305,7 @@ var data = [
 ];
 
 var app = angular.module('petroApp')
-  .controller('DashboardCtrl', ['$scope', '$http', '$q', '$timeout', function ($scope, $http, $q, $timeout) {
+  .controller('DashboardCtrl', ['$scope', '$http', '$q', '$timeout', '$rootScope', function ($scope, $http, $q, $timeout, $rootScope) {
 
     var wellnames = [];
     var latitudes = [];
@@ -437,13 +437,24 @@ var app = angular.module('petroApp')
         $scope.rowCollection.splice(index, 1);
       }
     };
+    
+    $rootScope.$watch('$scope.wellFile', function () {
+      $scope.wellFile =  $scope.wellFile;
+    });
+    
+    // function upload(files) {
+    //   if (files && files.length) {
+    //     console.log(files);
+    //   }
+      
+    // }
 
     $scope.uploadFile = function () {
       console.log($scope.wellFile);
 
       if (!$scope.wellFile) return alert('Please select a file');
 
-      extractData($scope.wellFile)
+      extractData($scope.wellFile[0])
         .then(function (parsedData) {
           console.log(parsedData);
           var a = parseData(parsedData.Sheet1);
