@@ -16,11 +16,13 @@ angular.module('petroApp')
       labels: [],
       data: [],
       series: ['Original Gas Rate (MCFD)', 'Gas Cum', 'Forecast Rate (MCFD)'],
-      colours: ['#0067C7', '#D1068A', '#7404BA']
+      colours: ['#0067C7', '#D1068A', '#7404BA'],
+      options: {
+        showTooltips: false
+      }
     };
 
     $scope.uploadFile = function() {
-      console.log($scope.wellFile);
 
       if ($scope.wellFile[0]) {
         extractData($scope.wellFile[0])
@@ -30,26 +32,29 @@ angular.module('petroApp')
               if (row['Original Date']) {
                 var origDate = moment(row['Original Date'], 'MMM-YY').format('YYYY-MM-DD');
                 if (!lines[origDate]) { lines[origDate] = {}; }
-                lines[origDate].origRate = +row['Original Gas Rate (MCFD)'];
-                lines[origDate].origCum = +row['Gas Cum'];
+                if (row['Original Gas Rate (MCFD)']) {
+                  lines[origDate].origRate = +row['Original Gas Rate (MCFD)'];
+                }
+                if (row['Gas Cum']) {
+                  lines[origDate].origCum = +row['Gas Cum'];
+                }
               }
               if (row['Forecast Date']) {
-                var foreDate = moment(row['Forecast Date'], 'MM/DD/YYYY').format('YYYY-MM-DD');
+                var foreDate = moment(row['Forecast Date'], 'DD/MM/YYYY').format('YYYY-MM-DD');
                 if (!lines[foreDate]) { lines[foreDate] = {}; }
-                lines[foreDate].foreRate = +row['Forecast Rate (MCFD)'];
+                if (row['Forecast Rate (MCFD)']) {
+                  lines[foreDate].foreRate = +row['Forecast Rate (MCFD)'];
+                }
               }
             });
-            console.log(lines);
             var labels = $scope.lines.labels = _.keys(lines).sort();
-            labels.splice(10);
+            //labels.splice(10);
             var data = $scope.lines.data = [[], [], []];
             _.each(labels, function(date) {
               data[0].push(lines[date].origRate);
-              //data[1].push(lines[date].origCum);
-              //data[2].push(lines[date].foreRate);
+              data[1].push(lines[date].origCum);
+              data[2].push(lines[date].foreRate);
             });
-
-            console.log($scope.lines);
           });
       }
     };
