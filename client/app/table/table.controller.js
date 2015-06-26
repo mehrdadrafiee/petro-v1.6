@@ -11,8 +11,46 @@ angular.module('petroApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
+    $scope.lineChartState = {
+      settings: {
+        x: { column: 'Date', format: 'MMM-YY' },
+        y: [
+          {
+            type: 'lineChart',
+            column: 'Original Gas Rate (MCFD)',
+            color: 'blue'
+          },
+          {
+            type: 'lineChart',
+            column: 'Gas Cum forecast',
+            color: 'purple',
+            rightY: true
+          },
+          {
+            type: 'lineChart',
+            column: 'Forecast Rate (MCFD)',
+            color: 'red'
+          }
+        ],
+        yAxis: 'Gas Production Rate (MCFD)',
+        rightYAxis: 'Cumulative Gas Production (BCF)'
+      }
+    };
 
-    $scope.lines = {
+    $scope.barChartState = {
+      settings: {
+        x: { column: 'Year', format: 'YYYY' },
+        y: [
+          {
+            type: 'barChart',
+            column: 'Cum. Cash 8%',
+            color: 'blue'
+          }
+        ]
+      }
+    };
+
+    /*$scope.lines = {
       labels: [],
       data: [],
       series: ['Original Gas Rate (MCFD)', 'Gas Cum', 'Forecast Rate (MCFD)'],
@@ -20,69 +58,14 @@ angular.module('petroApp')
       options: {
         showTooltips: false
       }
+    };*/
+
+    $scope.lines = null;
+
+    $scope.uploadFile = function(files) {
+      $scope.lineChartState.notifyUpload(files);
+      $scope.barChartState.notifyUpload(files);
     };
-
-    $scope.uploadFile = function() {
-
-      if ($scope.wellFile[0]) {
-        extractData($scope.wellFile[0])
-          .then(function (parsedData) {
-            var lines = {};
-            _.each(parsedData.Data, function(row) {
-              if (row['Original Date']) {
-                var origDate = moment(row['Original Date'], 'MMM-YY').format('YYYY-MM-DD');
-                if (!lines[origDate]) { lines[origDate] = {}; }
-                if (row['Original Gas Rate (MCFD)']) {
-                  lines[origDate].origRate = +row['Original Gas Rate (MCFD)'];
-                }
-                if (row['Gas Cum']) {
-                  lines[origDate].origCum = +row['Gas Cum'];
-                }
-              }
-              if (row['Forecast Date']) {
-                var foreDate = moment(row['Forecast Date'], 'DD/MM/YYYY').format('YYYY-MM-DD');
-                if (!lines[foreDate]) { lines[foreDate] = {}; }
-                if (row['Forecast Rate (MCFD)']) {
-                  lines[foreDate].foreRate = +row['Forecast Rate (MCFD)'];
-                }
-              }
-            });
-            var labels = $scope.lines.labels = _.keys(lines).sort();
-            //labels.splice(10);
-            var data = $scope.lines.data = [[], [], []];
-            _.each(labels, function(date) {
-              data[0].push(lines[date].origRate);
-              data[1].push(lines[date].origCum);
-              data[2].push(lines[date].foreRate);
-            });
-          });
-      }
-    };
-
-    function extractData(file) {
-      var defer = $q.defer();
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        var data = e.target.result;
-        var workbook = XLSX.read(data, {type: 'binary'});
-        var parsedData = toJson(workbook);
-        defer.resolve(parsedData);
-      };
-      reader.readAsBinaryString(file);
-
-      return defer.promise;
-    }
-
-    function toJson(workbook) {
-      var result = {};
-      workbook.SheetNames.forEach(function (sheetName) {
-        var roa = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
-        if (roa.length > 0) {
-          result[sheetName] = roa;
-        }
-      });
-      return result;
-    }
 
     $scope.logout = function() {
       Auth.logout();

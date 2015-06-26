@@ -99,3 +99,7 @@ body, #side-menu {
 }
 
 */
+
+div.dc-chart {
+    float: none;
+}

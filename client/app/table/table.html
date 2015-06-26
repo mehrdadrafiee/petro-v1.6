@@ -12,12 +12,13 @@
                        <h5>Import an excel file.</h5>
                        <p class="input-group">
                            <input type="file" ngf-select ngf-change="uploadFile($files)" ngf-multiple="multiple"
-                                  class="form-control" ng-model="wellFile"/>
+                                  class="form-control">
                        <span class="input-group-btn">
                          <button type="submit" class="btn btn-primary" ng-click="uploadFile()">Import Well(s)</button>
                        </span>
                        </p>
                      </form>
+
                 <div class="col-md-4">
                   <h2>Map</h2>
                   <h5>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </h5>
@@ -26,15 +27,7 @@
                 <div class="col-md-4">
                   <h2>Line Chart</h2>
                   <h5></h5>
-                    <div class="col-md-6">
-                        <canvas class="chart chart-line"
-                                data="lines.data"
-                                series="lines.series"
-                                labels="lines.labels"
-                                colours="lines.colours"
-                                legend="true"
-                                options="lines.options"></canvas>
-                    </div>
+                  <div petro-chart state="lineChartState"></div>
                 </div>
                 <div class="col-md-4">
                   <h2> </h2>
@@ -103,7 +96,7 @@
                 <div class="col-md-4">
                   <h2>Bar Chart</h2>
                   <h5></h5>
-                  <!-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
+                    <div petro-chart state="barChartState"></div>
                 </div>
                 <div class="col-md-4">
                   <h2> </h2>
