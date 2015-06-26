@@ -13,10 +13,10 @@ var WellSchema = new Schema({
 	rsvCat: String,
 	latLength: Number,
 	stages: Number,
-	date: { type: Date, default: Date.now }
+	date: { type: Date, default: Date.now },
 	totalOil: Number,
 	totalGas: Number,
-	totalWater: Number;
-})
+	totalWater: Number
+});
 
 module.exports = mongoose.model('Well', WellSchema);

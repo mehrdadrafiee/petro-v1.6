@@ -10,8 +10,7 @@ angular.module('petroApp', [
   'smart-table',
   'chart.js',
   'ngMap',
-  'ngFileUpload',
-  'angularDc'
+  'ngFileUpload'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

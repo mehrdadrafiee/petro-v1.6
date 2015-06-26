@@ -100,6 +100,10 @@ body, #side-menu {
 
 */
 
+input[type="file"].form-control {
+    padding: 0;
+}
+
 div.dc-chart {
     float: none;
 }
