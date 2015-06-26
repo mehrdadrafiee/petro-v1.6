@@ -305,7 +305,7 @@ var data = [
 ];
 
 var app = angular.module('petroApp')
-  .controller('DashboardCtrl', ['$scope', '$http', '$q', '$timeout', '$rootScope', function ($scope, $http, $q, $timeout, $rootScope) {
+  .controller('DashboardCtrl', ['$scope', '$http', '$q', '$timeout', '$rootScope', 'XLS', function ($scope, $http, $q, $timeout, $rootScope, XLS) {
 
     var wellnames = [];
     var latitudes = [];
@@ -437,16 +437,16 @@ var app = angular.module('petroApp')
         $scope.rowCollection.splice(index, 1);
       }
     };
-    
+
     $rootScope.$watch('$scope.wellFile', function () {
       $scope.wellFile =  $scope.wellFile;
     });
-    
+
     // function upload(files) {
     //   if (files && files.length) {
     //     console.log(files);
     //   }
-      
+
     // }
 
     $scope.uploadFile = function () {
@@ -454,7 +454,7 @@ var app = angular.module('petroApp')
 
       if (!$scope.wellFile) return alert('Please select a file');
 
-      extractData($scope.wellFile[0])
+      XLS.extractData($scope.wellFile[0])
         .then(function (parsedData) {
           console.log(parsedData);
           var a = parseData(parsedData.Sheet1);
@@ -470,31 +470,6 @@ var app = angular.module('petroApp')
           )
         });
     };
-
-    function extractData(file) {
-      var defer = $q.defer();
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        var data = e.target.result;
-        var workbook = XLSX.read(data, {type: 'binary'});
-        var parsedData = toJson(workbook);
-        defer.resolve(parsedData);
-      };
-      reader.readAsBinaryString(file);
-
-      return defer.promise;
-    }
-
-    function toJson(workbook) {
-      var result = {};
-      workbook.SheetNames.forEach(function (sheetName) {
-        var roa = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
-        if (roa.length > 0) {
-          result[sheetName] = roa;
-        }
-      });
-      return result;
-    }
 
     function parseData(rawData) {
       var data = [];

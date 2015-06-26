@@ -2,30 +2,6 @@
 
 angular.module('petroApp')
   .directive('petroChart', function($q, $parse) {
-    function extractData(file) {
-      var defer = $q.defer();
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        var data = e.target.result;
-        var workbook = XLSX.read(data, {type: 'binary'});
-        var parsedData = toJson(workbook);
-        defer.resolve(parsedData);
-      };
-      reader.readAsBinaryString(file);
-
-      return defer.promise;
-    }
-
-    function toJson(workbook) {
-      var result = {};
-      workbook.SheetNames.forEach(function (sheetName) {
-        var roa = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
-        if (roa.length > 0) {
-          result[sheetName] = roa;
-        }
-      });
-      return result;
-    }
 
     function extractLine(data, x, y) {
       var minX = +Infinity;
@@ -73,40 +49,37 @@ angular.module('petroApp')
 
         var chart = null;
 
-        state.notifyUpload = function(files) {
+        state.update = function(parsedData) {
           if (chart && chart.resetSVG) {
             chart.resetSVG();
           }
-          if (files && files[0]) {
-            extractData(files[0])
-              .then(function(parsedData) {
-                var lines = _.map(settings.y, function(y) {
-                  return extractLine(parsedData.Data, settings.x, y.column);
-                });
+          if (parsedData) {
+            var lines = _.map(settings.y, function(y) {
+              return extractLine(parsedData.Data, settings.x, y.column);
+            });
 
-                chart = dc.compositeChart(elem.get(0));
-                chart
-                  .x(d3.time.scale().domain([
-                    _.min(_.pluck(lines, 'minX')),
-                    _.max(_.pluck(lines, 'maxX'))
-                  ]))
-                  .yAxisLabel(settings.yAxis)
-                  .rightYAxisLabel(settings.rightYAxis)
-                  .renderHorizontalGridLines(true)
-                  .compose(_.map(lines, function(line, index) {
-                    var s = settings.y[index];
-                    var ch = dc[s.type](chart)
-                      .dimension(line.dim)
-                      .group(line.group, s.column)
-                      .colors(s.color);
-                    if (s.rightY) {
-                      ch.useRightYAxis(true);
-                    }
-                    return ch;
-                  }))
-                  .brushOn(false)
-                  .render();
-              });
+            chart = dc.compositeChart(elem.get(0));
+            chart
+              .x(d3.time.scale().domain([
+                _.min(_.pluck(lines, 'minX')),
+                _.max(_.pluck(lines, 'maxX'))
+              ]))
+              .yAxisLabel(settings.yAxis)
+              .rightYAxisLabel(settings.rightYAxis)
+              .renderHorizontalGridLines(true)
+              .compose(_.map(lines, function(line, index) {
+                var s = settings.y[index];
+                var ch = dc[s.type](chart)
+                  .dimension(line.dim)
+                  .group(line.group, s.column)
+                  .colors(s.color);
+                if (s.rightY) {
+                  ch.useRightYAxis(true);
+                }
+                return ch;
+              }))
+              .brushOn(false)
+              .render();
           }
         };
 

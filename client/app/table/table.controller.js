@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('petroApp')
-  .controller('TableCtrl', function ($scope, $location, $http, Auth, $q) {
+  .controller('TableCtrl', function ($scope, $location, $http, Auth, XLS) {
     $scope.menu = [{
       'title': 'Table',
       'link': '/table'
@@ -52,6 +52,8 @@ angular.module('petroApp')
 
     $scope.dashboard = null;
 
+    $scope.statistics = null;
+
     /*$scope.lines = {
       labels: [],
       data: [],
@@ -65,8 +67,14 @@ angular.module('petroApp')
     $scope.lines = null;
 
     $scope.uploadFile = function(files) {
-      $scope.lineChartState.notifyUpload(files);
-      $scope.barChartState.notifyUpload(files);
+      if (files && files.length) {
+        XLS.extractData(files[0])
+          .then(function (parsedData) {
+            $scope.lineChartState.update(parsedData);
+            $scope.barChartState.update(parsedData);
+            $scope.statistics = parsedData.Data;
+          });
+      }
     };
 
     $scope.logout = function() {
