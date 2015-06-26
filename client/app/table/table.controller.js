@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('petroApp')
-  .controller('TableCtrl', function ($scope, $location, Auth, $q) {
+  .controller('TableCtrl', function ($scope, $location, $http, Auth, $q) {
     $scope.menu = [{
       'title': 'Table',
       'link': '/table'
@@ -50,6 +50,8 @@ angular.module('petroApp')
       }
     };
 
+    $scope.dashboard = null;
+
     /*$scope.lines = {
       labels: [],
       data: [],
@@ -75,4 +77,25 @@ angular.module('petroApp')
     $scope.isActive = function(route) {
       return route === $location.path();
     };
+
+    $scope.$on('mapInitialized', function(event, map) {
+      $scope.map = map;
+    });
+
+    $http.get('/api/dashboards')
+      .success(function(dashboards) {
+        if (dashboards && dashboards.length) {
+          var dashboard = $scope.dashboard = dashboards[0];
+
+          if ($scope.map) {
+            var marker = new google.maps.Marker({});
+            marker.setPosition(new google.maps.LatLng(dashboard.latitude, dashboard.longitude));
+            marker.setMap($scope.map);
+
+            var boundary = new google.maps.LatLngBounds();
+            boundary.extend(marker.position);
+            $scope.map.fitBounds(boundary);
+          }
+        }
+      });
   });
