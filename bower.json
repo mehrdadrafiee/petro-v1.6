@@ -22,7 +22,8 @@
     "js-xlsx": "~0.8.0",
     "ngmap": "~1.7.11",
     "ng-file-upload": "~5.0.9",
-    "angular-google-maps": "~2.1.5"
+    "angular-google-maps": "~2.1.5",
+    "dcjs": "~1.7.3"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",
@@ -33,6 +34,7 @@
     "angular": "1.4.0",
     "bootstrap": "~3.1.1",
     "lodash": "~3.8.0",
-    "chance": "0.4.2"
+    "chance": "0.4.2",
+    "dcjs": "2.0.0-beta.3"
   }
 }
