@@ -1,0 +1,38 @@
+{
+  "name": "dcjs",
+  "version": "2.0.0-beta.12",
+  "main": [
+    "dc.js",
+    "dc.css"
+  ],
+  "keywords": [
+    "visualization",
+    "svg",
+    "animation",
+    "canvas",
+    "chart",
+    "dimensional",
+    "crossfilter",
+    "d3"
+  ],
+  "ignore": [
+    "*",
+    "!dc.*",
+    "!LICENSE",
+    "!README.md"
+  ],
+  "dependencies": {
+    "d3": "3.x",
+    "crossfilter": "1.x"
+  },
+  "homepage": "https://github.com/NickQiZhu/dc.js",
+  "_release": "2.0.0-beta.12",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.0.0-beta.12",
+    "commit": "d3acb0be12a864fa30c76f16320958220d402264"
+  },
+  "_source": "git://github.com/NickQiZhu/dc.js.git",
+  "_target": "~2.0.0-beta.3",
+  "_originalSource": "dcjs"
+}
