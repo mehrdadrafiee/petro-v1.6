@@ -31,6 +31,8 @@
   },
   "devDependencies": {
     "connect-livereload": "^0.5.3",
+    "google-cdn": "^1.0.0",
+    "google-cdn-data": "^0.1.17",
     "grunt": "~0.4.4",
     "grunt-angular-templates": "^0.5.4",
     "grunt-asset-injector": "^0.1.0",
