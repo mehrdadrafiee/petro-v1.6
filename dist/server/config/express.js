@@ -20,7 +20,8 @@ var mongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose');
 
 module.exports = function(app) {
-  var env = app.get('env');
+  //var env = app.get('env');
+  var env = 'production';
 
   app.set('views', config.root + '/server/views');
   app.engine('html', require('ejs').renderFile);
@@ -42,9 +43,9 @@ module.exports = function(app) {
   }));
 
   if ('production' === env) {
-    app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
-    app.use(express.static(path.join(config.root, 'client')));
-    app.set('appPath', config.root + '/client');
+    app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
+    app.use(express.static(path.join(config.root, 'public')));
+    app.set('appPath', config.root + '/public');
     app.use(morgan('dev'));
   }
 
